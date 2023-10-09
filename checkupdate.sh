@@ -6,6 +6,3 @@
 sudo apt update > /dev/null
 OUTPUT=$(sudo apt list --upgradable | wc -l)
 echo "" $OUTPUT
-
-##
-
