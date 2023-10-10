@@ -14,9 +14,13 @@ ARTIST_PATTERN = r'xesam:artist\s+([^\'\[\]]+)'
 #### Get the currently playing song ####
 returned_data = subprocess.run(['playerctl','metadata'],
                                capture_output=True,text=True,check=False).stdout.split("\n")
-ARTIST = returned_data[3]
-TITLE = returned_data[1]
-MAX_CHARACTERS = 35
+try:
+    ARTIST = returned_data[3]
+    TITLE = returned_data[1]
+    MAX_CHARACTERS = 35
+except IndexError:
+    print("-*-")
+
 
 match = re.search(TITLE_PATTERN, TITLE)
 
