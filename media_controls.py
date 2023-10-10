@@ -3,7 +3,6 @@
 import subprocess
 import re
 
-
 ## This script was made to be used with polybar ##
 # Requires playerctl to be installed
 
