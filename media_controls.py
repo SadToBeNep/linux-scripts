@@ -1,5 +1,6 @@
 #!/bin/python3
 
+"""Used to execute commands"""
 import subprocess
 import re
 
@@ -40,5 +41,6 @@ else:
 
 
 OUTPUT = f"{ARTIST} - {TITLE}"
-if(len(OUTPUT) > MAX_CHARACTERS): OUTPUT = OUTPUT[0:MAX_CHARACTERS]
+if len(OUTPUT) > MAX_CHARACTERS: 
+    OUTPUT = OUTPUT[0:MAX_CHARACTERS]
 print(OUTPUT)

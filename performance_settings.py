@@ -1,4 +1,5 @@
 #!/bin/python3
+"""Used to execute commands"""
 import subprocess
 import sys
 
@@ -9,6 +10,7 @@ PERFORMANCE_GLYPH = " 󰲉 "
 
 
 def read_current_setting():
+    """Reads the current CPU gov setting"""
     cpu_speed = subprocess.run(['/home/nep/Scripts/read_cpu_ghz.sh'],
                                capture_output=True,text=True,check=False)
 
@@ -17,16 +19,20 @@ def read_current_setting():
     return_data = subprocess.run(['cat','/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'], 
                                  capture_output=True,text=True,check=False)
 
-    if("powersave" in return_data.stdout): print(f"{POWERSAVE_GLYPH} {cpu_speed}")
+    if "powersave" in return_data.stdout:
+        print(f"{POWERSAVE_GLYPH} {cpu_speed}")
     else: print(f"{PERFORMANCE_GLYPH} {cpu_speed}")
 
 def change_to_another_mode():
+    """Changes the mode to another"""
     return_data = subprocess.run(['cat','/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'], 
                                  capture_output=True,text=True,check=False)
-    if("powersave" in return_data.stdout): subprocess.run(['sudo','to_performance'],check=False)
+    if "powersave" in return_data.stdout:
+        subprocess.run(['sudo','to_performance'],check=False)
     else:subprocess.run(['sudo','to_powersave'],check=False)
 
-if(__name__ == "__main__"):
-    if(len(sys.argv) == 2): change_to_another_mode()
+if __name__ == "__main__":
+    if len(sys.argv) == 2:
+        change_to_another_mode()
     else: read_current_setting()
     

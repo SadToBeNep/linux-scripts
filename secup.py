@@ -65,12 +65,12 @@ def zip_collected_files():
     upload_zip_file(zip_file_name)
 
 
-def upload_zip_file(ZIP_FILE_NAME):
+def upload_zip_file(zip_file_name):
     """Upload the created zip file"""
 
-    lcg = TEMP_DIR_PATH+"/"+ZIP_FILE_NAME+".zip"
+    lcg = TEMP_DIR_PATH+"/"+zip_file_name+".zip"
 
-    subprocess.run(['mv', ZIP_FILE_NAME+".zip", TEMP_DIR_PATH+"/."],check=False)
+    subprocess.run(['mv', zip_file_name+".zip", TEMP_DIR_PATH+"/."],check=False)
     return_code = subprocess.run(['curl', '-F', f"file=@{lcg}", 'http://0x0.st'],
                                  capture_output=True, text=True, check=False)
     print(return_code.stdout)
