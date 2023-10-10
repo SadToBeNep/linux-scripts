@@ -16,7 +16,7 @@ def read_current_setting():
 
     cpu_speed = cpu_speed.stdout.strip()
 
-    return_data = subprocess.run(['cat','/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'], 
+    return_data = subprocess.run(['cat','/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'],
                                  capture_output=True,text=True,check=False)
 
     if "powersave" in return_data.stdout:
@@ -25,7 +25,7 @@ def read_current_setting():
 
 def change_to_another_mode():
     """Changes the mode to another"""
-    return_data = subprocess.run(['cat','/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'], 
+    return_data = subprocess.run(['cat','/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'],
                                  capture_output=True,text=True,check=False)
     if "powersave" in return_data.stdout:
         subprocess.run(['sudo','to_performance'],check=False)
