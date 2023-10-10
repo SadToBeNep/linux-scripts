@@ -1,23 +1,24 @@
 #!/bin/python3
 
+import subprocess
+import re
+
+
 ## This script was made to be used with polybar ##
 # Requires playerctl to be installed
 
-title_pattern = r'xesam:title\s+([^\'\[\]]+)'
-artist_pattern = r'xesam:artist\s+([^\'\[\]]+)'
+TITLE_PATTERN = r'xesam:title\s+([^\'\[\]]+)'
+ARTIST_PATTERN = r'xesam:artist\s+([^\'\[\]]+)'
 
-
-
-
-import subprocess,re
 
 #### Get the currently playing song ####
-returned_data = subprocess.run(['playerctl','metadata'],capture_output=True,text=True).stdout.split("\n")
+returned_data = subprocess.run(['playerctl','metadata'],
+                               capture_output=True,text=True,check=False).stdout.split("\n")
 ARTIST = returned_data[3]
 TITLE = returned_data[1]
 MAX_CHARACTERS = 35
 
-match = re.search(title_pattern, TITLE)
+match = re.search(TITLE_PATTERN, TITLE)
 
 # Check if a match was found
 if match:
@@ -28,7 +29,7 @@ else:
 
 
 
-match = re.search(artist_pattern, ARTIST)
+match = re.search(ARTIST_PATTERN, ARTIST)
 
 # Check if a match was found
 if match:
@@ -40,6 +41,5 @@ else:
 
 
 OUTPUT = f"{ARTIST} - {TITLE}"
-if(len(OUTPUT) > MAX_CHARACTERS):
-    OUTPUT = OUTPUT[0:MAX_CHARACTERS]
+if(len(OUTPUT) > MAX_CHARACTERS): OUTPUT = OUTPUT[0:MAX_CHARACTERS]
 print(OUTPUT)
