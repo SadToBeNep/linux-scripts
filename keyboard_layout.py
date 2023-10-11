@@ -10,7 +10,7 @@ import sys
 
 
 
-def toggle_layout():
+def toggle_layout):
     """Toggling between given layouts"""
 
     ### Get current layout
