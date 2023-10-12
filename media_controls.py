@@ -3,7 +3,6 @@
 """Used to execute commands"""
 import subprocess
 import re
-import time
 
 ## This script was made to be used with polybar ##
 # Requires playerctl to be installed
