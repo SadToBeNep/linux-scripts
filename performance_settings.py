@@ -14,14 +14,24 @@ def read_current_setting():
     cpu_speed = subprocess.run(['/home/nep/Scripts/read_cpu_ghz.sh'],
                                capture_output=True,text=True,check=False)
 
-    cpu_speed = cpu_speed.stdout.strip()
+    cpu_speed = cpu_speed.stdout.split("\n")
+    average = 0
+    count = 0
+    for line in cpu_speed:
+        if len(line) < 2:
+            pass
+        else:
+            average += float(line.split(":")[-1].strip())
+            count+=1
+    cpu_speed = int(average/count)/1000
+    cpu_speed = "%.3f" % cpu_speed
 
     return_data = subprocess.run(['cat','/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'],
                                  capture_output=True,text=True,check=False)
 
     if "powersave" in return_data.stdout:
-        print(f"{POWERSAVE_GLYPH} {cpu_speed}")
-    else: print(f"{PERFORMANCE_GLYPH} {cpu_speed}")
+        print(f"{POWERSAVE_GLYPH} {cpu_speed} GHz")
+    else: print(f"{PERFORMANCE_GLYPH} {cpu_speed} GHz")
 
 def change_to_another_mode():
     """Changes the mode to another"""
