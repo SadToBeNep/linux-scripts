@@ -24,7 +24,7 @@ def read_current_setting():
             average += float(line.split(":")[-1].strip())
             count+=1
     cpu_speed = int(average/count)/1000
-    cpu_speed = "%.3f" % cpu_speed
+    cpu_speed = f"{cpu_speed:.2f}"
 
     return_data = subprocess.run(['cat','/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'],
                                  capture_output=True,text=True,check=False)
