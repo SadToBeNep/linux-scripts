@@ -7,7 +7,7 @@ import re
 ## This script was made to be used with polybar ##
 # Requires playerctl to be installed
 
-TITLE_PATTERN = r'xesam:title\s+([^\'\[\]]+)'
+TITLE_PATTERN = r'xesam:title\s+([^\n]+)'
 ARTIST_PATTERN = r'xesam:artist\s+([^\'\[\]]+)'
 
 
@@ -16,7 +16,7 @@ returned_data = subprocess.run(['playerctl','metadata'],
                                capture_output=True,text=True,check=False).stdout.split("\n")
 try:
     ARTIST = returned_data[3]
-    TITLE = returned_data[1]
+    TITLE = returned_data[4]
     MAX_CHARACTERS = 35
 
     match = re.search(TITLE_PATTERN, TITLE)
@@ -26,7 +26,7 @@ try:
         song_title = match.group(1)
         TITLE = song_title.strip()
     else:
-        print("No match found.")
+        TITLE = "X"
 
 
 
@@ -37,7 +37,7 @@ try:
         song_artist = match.group(1)
         ARTIST = song_artist.strip()
     else:
-        print("No match found.")
+        ARTIST = "Y"
 
 
 
