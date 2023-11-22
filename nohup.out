@@ -43,3 +43,18 @@
 [ 11/14/2023 17:54:28.087 session_init FATAL ERROR ] Another composite manager is already running
 [ 11/14/2023 17:54:28.138 session_init FATAL ERROR ] Another composite manager is already running
 [ 11/14/2023 17:54:28.188 session_init FATAL ERROR ] Another composite manager is already running
+[ 11/21/2023 06:46:44.037 glx_bind_pixmap ERROR ] GL error at line 446: GL_INVALID_OPERATION
+[ 11/21/2023 06:46:53.981 session_init FATAL ERROR ] Another composite manager is already running
+[ 11/21/2023 06:47:04.017 session_init FATAL ERROR ] Another composite manager is already running
+[ 11/21/2023 06:47:14.051 session_init FATAL ERROR ] Another composite manager is already running
+[ 11/21/2023 06:47:24.088 session_init FATAL ERROR ] Another composite manager is already running
+[ 11/21/2023 06:47:34.120 session_init FATAL ERROR ] Another composite manager is already running
+[ 11/21/2023 06:47:44.156 session_init FATAL ERROR ] Another composite manager is already running
+[ 11/21/2023 06:47:54.190 session_init FATAL ERROR ] Another composite manager is already running
+[ 11/21/2023 06:48:55.370 glx_bind_pixmap ERROR ] GL error at line 446: GL_INVALID_OPERATION
+[ 11/21/2023 06:53:45.823 x_log_error WARN ] X error 3 WINDOW request 2 minor 0 serial 21937
+[ 11/21/2023 07:05:29.096 glx_bind_pixmap ERROR ] GL error at line 446: GL_INVALID_OPERATION
+[ 11/22/2023 13:05:17.250 glx_bind_pixmap ERROR ] GL error at line 446: GL_INVALID_OPERATION
+picom doesn't accept positional arguments.
+picom doesn't accept positional arguments.
+[ 11/22/2023 13:11:52.052 glx_bind_pixmap ERROR ] GL error at line 446: GL_INVALID_OPERATION
